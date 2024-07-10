@@ -1,3 +1,48 @@
-body{
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+body {
     margin: 0;
 }
+
+
+#content-container {
+    display: flex;
+}
+
+
+section {
+    width: 75vw;
+}
+
+
+.start-pic {
+    height: 240px;
+    width: 100%;
+    object-fit: cover;
+   
+}
+
+
+.restaurant{
+    background-image: url('../img/burger.jpg');
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.circle-pic{
+    z-index: 20;
+    position:relative;
+    top: 240px;
+    width: 120px;
+    height:120px
+    
+}
+
+
