@@ -60,7 +60,7 @@ function returnDesserts(index) {
     let price = priceToString.replace(".", ",")
     return /*html*/ `
     <div class="oneCard">    
-        <div class="card-name">${arrayFilteredDesserts[index]["name"]}</div>
+        <div class="card-name"><span>${arrayFilteredDesserts[index]["name"]}</span><div class="add-dishes" onclick="addToBasket(arrayFilteredDesserts, ${index})">+</div></div>
         <div class="card-description">${arrayFilteredDesserts[index]["description"]}</div>
         <div class="card-price">${price}€</div>
     </div>
@@ -73,7 +73,7 @@ function returnDrinks(index) {
     let price = priceToString.replace(".", ",")
     return /*html*/ `
     <div class="oneCard">    
-        <div class="card-name">${arrayFilteredDrinks[index]["name"]}</div>
+        <div class="card-name"><span>${arrayFilteredDrinks[index]["name"]}</span><div class="add-dishes" onclick="addToBasket(arrayFilteredDrinks, ${index})">+</div></div>
         <div class="card-price">${price}€</div>
     </div>
     `
@@ -99,6 +99,9 @@ priceToString = priceToString.replace(".", ",");
                 </div>
                 <div class="pricing">
                     ${priceToString}€
+                </div>
+                               <div class="pricing">
+                    <img class="trash-icon" onclick="removeCard(${index})" src="./img/trash.png">
                 </div>
             </div>
         </div>

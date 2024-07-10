@@ -21,25 +21,24 @@
     flex-direction: column;
     align-items: start;
     margin-top: 24px;
-    
+
 }
 
 
-.amount-and-price{
+.amount-and-price {
     width: 100%;
     display: flex;
     justify-content: space-around;
-
 }
 
 
-.amount-calc{
+.amount-calc {
     display: flex;
     align-items: center;
 }
 
 
-.plusminus{
+.plusminus {
     color: #ff8000;
     font-size: large;
     font-weight: bold;
@@ -49,23 +48,79 @@
 }
 
 
-.plusminus:hover{
+.plusminus:hover {
     cursor: pointer;
     transform: scale(2);
     filter: brightness(110%);
-    
 }
 
 
-.pricing{
+.emptyBasket {
+    margin-top: 40px;
+    color: grey;
+}
+
+
+.pricing {
     display: flex;
     align-items: center;
 }
 
-.calculation{
+.calculation {
     margin-top: 32px;
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+}
+
+
+.trash-icon {
+    height: 24px;
+    filter: invert(48%) sepia(71%) saturate(1619%) hue-rotate(0deg) brightness(103%) contrast(108%);
+}
+
+.trash-icon:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    filter: brightness(110%);
+    filter: invert(48%) sepia(71%) saturate(1619%) hue-rotate(0deg) brightness(103%) contrast(108%);
+}
+
+
+.deliverypic {
+    height: 24px;
+    width: 24px
+}
+
+
+.delivery {
+    background-color: #fee5cb;
+    border-radius: 8px;
+    padding: 4px;
+    display: flex;
+    gap: 4px;
+    filter: drop-shadow(4px 4px 2px #ff8000);
+}
+
+.delivery:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+.choosen{
+    background-color: #ff8000;
+}
+
+.deliverybox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 0;
+    height: 32px;
+    width: 40px;
+    
 }

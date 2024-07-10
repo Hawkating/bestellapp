@@ -1,19 +1,41 @@
-*{
+* {
     font-family: "Poppins", sans-serif;
 }
 
 body {
     margin: 0;
+    --sb-track-color: #d6d6d6;
+    --sb-thumb-color: #ff8000;
+    --sb-size: 8px;
 }
 
+body::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 1px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 1px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
 
 #content-container {
     display: flex;
-    width: 100vw;
+
 }
 
 
-#section-corporate-design{
+#section-corporate-design {
     width: calc(100vw - 300px);
 }
 
@@ -21,11 +43,11 @@ body {
     height: 240px;
     width: 100%;
     object-fit: cover;
-   
+
 }
 
 
-.restaurant{
+.restaurant {
     background-image: url('../img/burger.jpg');
     background-size: cover;
     height: 300px;
@@ -36,21 +58,22 @@ body {
 }
 
 
-.circle-pic{
+.circle-pic {
     z-index: 20;
-    position:relative;
+    position: relative;
     top: 240px;
     width: 120px;
-    height:120px
+    height: 120px
 }
 
 
-.restaurant-info{
-    padding: 0px 0px 0px 32px;;
+.restaurant-info {
+    padding: 0px 0px 0px 32px;
+    ;
 }
 
 
-.restaurant-info span{
+.restaurant-info span {
     color: #ff8000;
 }
 
@@ -59,11 +82,10 @@ h3 {
     margin-left: 32px;
 }
 
-.separator-pic{
+.separator-pic {
     height: 150px;
     width: calc(100% - 16px);
     padding-left: 16px;
     object-fit: cover;
-    margin-top:50px;
+    margin-top: 50px;
 }
-

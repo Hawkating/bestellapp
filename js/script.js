@@ -9,7 +9,7 @@ function init() {
     content.innerHTML = ``;
     content.innerHTML = returnHeader();
     content.innerHTML += returnRestaurant();
-    
+
     document.getElementById('cards-main').innerHTML = `<img class="separator-pic" src="./img/main.jpg"><h3>Hauptgerichte</h3>`;
 
     for (let i = 0; i < arrayFilteredMain.length; i++) {
@@ -86,9 +86,11 @@ function addOneAmount(index) {
 }
 
 function renderBasket() {
-    document.getElementById('basket').innerHTML = `<h2>Warenkorb</h2>`;
-    if(basketFood.length == 0){
-        document.getElementById('basket').innerHTML += `Der Warenkorb ist leer`
+    if (delivery) {
+        document.getElementById('basket').innerHTML = `<h2>Warenkorb</h2><div class="delivery" onclick="deliveryToggle()"><div id="delivery-yes" class="deliverybox choosen"><img class="deliverypic" src="./img/delivery.png"></div><div id="delivery-no" class="deliverybox"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`;
+    } else { document.getElementById('basket').innerHTML = `<h2>Warenkorb</h2><div class="delivery" onclick="deliveryToggle()"><div id="delivery-yes" class="deliverybox"><img class="deliverypic" src="./img/delivery.png"></div><div id="delivery-no" class="deliverybox choosen"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`; }
+    if (basketFood.length == 0) {
+        document.getElementById('basket').innerHTML += `<div class="emptyBasket">Der Warenkorb ist leer</div>`
     }
     for (let i = 0; i < basketFood.length; i++) {
 
@@ -96,27 +98,59 @@ function renderBasket() {
     }
     if (basketFood.length > 0) {
         let calculatedPrice = 0;
-        
-        for(let i = 0; i < basketFood.length; i++){
-           let multiplicate = basketAmount[i] * basketPrices[i];
-           calculatedPrice = calculatedPrice + multiplicate;
+
+        for (let i = 0; i < basketFood.length; i++) {
+            let multiplicate = basketAmount[i] * basketPrices[i];
+            calculatedPrice = calculatedPrice + multiplicate;
         }
 
-            if(delivery){
-                calculatedPrice = calculatedPrice + 3;
-                calculatedPrice = calculatedPrice.toFixed(2);
+        if (delivery) {
+            calculatedPrice = calculatedPrice + 3;
+            calculatedPrice = calculatedPrice.toFixed(2);
 
-                let priceToString = calculatedPrice.toString();
-                priceToString = priceToString.replace(".", ",");
-                
-                
+            let priceToString = calculatedPrice.toString();
+            priceToString = priceToString.replace(".", ",");
 
-                document.getElementById('basket').innerHTML += `<div class="calculation">Lieferung:<div>3,00€</div><div><div><b>Gesamt: <b>${priceToString}€</b></div>`
-            } else {
-                calculatedPrice = calculatedPrice.toFixed(2);
-                document.getElementById('basket').innerHTML += `<div>${calculatedPriceString}€</div>`}
-        
+
+
+            document.getElementById('basket').innerHTML += `<div class="calculation">Lieferung: 3,00€<div><div><b>Gesamt: <b>${priceToString}€</b></div>`
+        } else {
+            calculatedPrice = calculatedPrice.toFixed(2);
+            let priceToString = calculatedPrice.toString();
+            priceToString = priceToString.replace(".", ",");
+            document.getElementById('basket').innerHTML += `<div class="calculation"><div><b>Gesamt: <b>${priceToString}€</b></div>`
+        }
+
+    }
+
 }
 
+
+function removeCard(index) {
+    let name = basketFood[index];
+    let newIndex = basketFood.indexOf(name);
+
+
+    basketFood.splice(newIndex, 1);
+    basketPrices.splice(newIndex, 1);
+    basketAmount.splice(newIndex, 1);
+
+    renderBasket();
+
+}
+
+
+function deliveryToggle() {
+    delivery = !delivery;
+    if (delivery) {
+        document.getElementById('delivery-yes').classList.add('choosen');
+        document.getElementById('delivery-no').classList.remove('choosen');
+    } else {
+        document.getElementById('delivery-yes').classList.remove('choosen');
+        document.getElementById('delivery-no').classList.add('choosen');
+    }
+
+
+    renderBasket();
 }
 
