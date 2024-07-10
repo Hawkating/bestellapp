@@ -27,75 +27,89 @@ function init() {
     for (let i = 0; i < arrayFilteredDrinks.length; i++) {
         document.getElementById('cards-main').innerHTML += returnDrinks(i);
     }
+
     renderBasket();
 }
 
 
 function addToBasket(array, index) {
-
     let name = array[index]["name"];
     let price = array[index]["price"];
 
     let calculatedIndex = basketFood.indexOf(`${name}`)
 
     if (calculatedIndex == -1) {
-
         basketFood.push(name);
         basketPrices.push(price);
         basketAmount.push(1);
-
     } else {
-
         basketAmount[calculatedIndex] = basketAmount[calculatedIndex] + 1;
-
     }
-
 
     renderBasket();
 }
 
 
-
 function removeOneAmount(index) {
-
     let name = basketFood[index];
     let newIndex = basketFood.indexOf(name);
 
     if (basketAmount[newIndex] > 1) {
-
         basketAmount[newIndex] = basketAmount[newIndex] - 1;
-
     } else {
         basketFood.splice(newIndex, 1);
         basketPrices.splice(newIndex, 1);
         basketAmount.splice(newIndex, 1);
     }
     renderBasket();
-
 }
 
 
 function addOneAmount(index) {
-
     let name = basketFood[index];
     let newIndex = basketFood.indexOf(name);
     basketAmount[newIndex] = basketAmount[newIndex] + 1;
 
     renderBasket();
-
 }
+
 
 function renderBasket() {
     if (delivery) {
-        document.getElementById('basket').innerHTML = `<h2>Warenkorb</h2><div class="delivery" onclick="deliveryToggle()"><div id="delivery-yes" class="deliverybox choosen"><img class="deliverypic" src="./img/delivery.png"></div><div id="delivery-no" class="deliverybox"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`;
-    } else { document.getElementById('basket').innerHTML = `<h2>Warenkorb</h2><div class="delivery" onclick="deliveryToggle()"><div id="delivery-yes" class="deliverybox"><img class="deliverypic" src="./img/delivery.png"></div><div id="delivery-no" class="deliverybox choosen"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`; }
-    if (basketFood.length == 0) {
-        document.getElementById('basket').innerHTML += `<div class="emptyBasket">Der Warenkorb ist leer</div>`
-    }
-    for (let i = 0; i < basketFood.length; i++) {
+        document.getElementById('basket').innerHTML = `
+            <h2>Warenkorb</h2><div class="delivery" onclick="deliveryToggle()"><div id="delivery-yes" class="deliverybox choosen"><img class="deliverypic" src="./img/delivery.png"></div>
+            <div id="delivery-no" class="deliverybox"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`;
 
-        document.getElementById('basket').innerHTML += returnBasket(i);
+        document.getElementById('dialog-basket').innerHTML = `<div class="responsive-basket-up" onclick="toggleBasket()">Warenkorb</div>
+            <div class="delivery" onclick="deliveryToggle()"><div id="delivery-yes" class="deliverybox choosen"><img class="deliverypic" src="./img/delivery.png"></div>
+            <div id="delivery-no" class="deliverybox"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`;
+
+        if (basketFood.length == 0) {
+            document.getElementById('basket').innerHTML += `<div class="emptyBasket">Der Warenkorb ist leer</div>`;
+
+            document.getElementById('dialog-basket').innerHTML += `<div class="emptyBasket">Der Warenkorb ist leer</div>`;
+        }
+
+    } else {
+        document.getElementById('basket').innerHTML = `<h2>Warenkorb</h2><div class="delivery" onclick="deliveryToggle()"><div id="delivery-yes" class="deliverybox">
+                        <img class="deliverypic" src="./img/delivery.png"></div><div id="delivery-no" class="deliverybox choosen"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`;
+
+        document.getElementById('dialog-basket').innerHTML = `<div class="responsive-basket-up" onclick="toggleBasket()">Warenkorb</div><div class="delivery" onclick="deliveryToggle()">
+                        <div id="delivery-yes" class="deliverybox">
+                        <img class="deliverypic" src="./img/delivery.png"></div><div id="delivery-no" class="deliverybox choosen"><img class="deliverypic" src="./img/nodelivery.png"></div></div>`;
+
+        if (basketFood.length == 0) {
+            document.getElementById('basket').innerHTML += `<div class="emptyBasket">Der Warenkorb ist leer</div>`;
+
+            document.getElementById('dialog-basket').innerHTML += `<div class="emptyBasket">Der Warenkorb ist leer</div>`;
+        }
     }
+
+    for (let i = 0; i < basketFood.length; i++) {
+        document.getElementById('basket').innerHTML += returnBasket(i);
+        document.getElementById('dialog-basket').innerHTML += returnBasketResponsive(i);
+    }
+
     if (basketFood.length > 0) {
         let calculatedPrice = 0;
 
@@ -111,18 +125,21 @@ function renderBasket() {
             let priceToString = calculatedPrice.toString();
             priceToString = priceToString.replace(".", ",");
 
-
-
             document.getElementById('basket').innerHTML += `<div class="calculation">Lieferung: 3,00€<div><div><b>Gesamt: <b>${priceToString}€</b></div>`
+
+            document.getElementById('dialog-basket').innerHTML += `<div class="calculation calcresp">Lieferung: 3,00€<div><div><b>Gesamt: <b>${priceToString}€</b></div>`
         } else {
             calculatedPrice = calculatedPrice.toFixed(2);
             let priceToString = calculatedPrice.toString();
             priceToString = priceToString.replace(".", ",");
             document.getElementById('basket').innerHTML += `<div class="calculation"><div><b>Gesamt: <b>${priceToString}€</b></div>`
+            document.getElementById('dialog-basket').innerHTML += `<div class="calculation calcresp"><div><b>Gesamt: <b>${priceToString}€</b></div>`
         }
-
     }
-
+    if (basketFood.length == 0) {
+        document.getElementById('basket').innerHTML += `<div class="emptyBasket>Der Warenkorb ist leer</div>`;
+        document.getElementById('dialog-basket').innerHTML += `<div class="emptyBasket>Der Warenkorb ist leer</div>`;
+    }
 }
 
 
@@ -130,13 +147,11 @@ function removeCard(index) {
     let name = basketFood[index];
     let newIndex = basketFood.indexOf(name);
 
-
     basketFood.splice(newIndex, 1);
     basketPrices.splice(newIndex, 1);
     basketAmount.splice(newIndex, 1);
 
     renderBasket();
-
 }
 
 
@@ -150,7 +165,11 @@ function deliveryToggle() {
         document.getElementById('delivery-no').classList.add('choosen');
     }
 
-
     renderBasket();
+}
+
+
+function toggleBasket() {
+    document.getElementById('dialog-basket').classList.toggle('d-none');
 }
 
