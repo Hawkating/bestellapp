@@ -3,7 +3,7 @@ let dishes = [
         "name": "Cheeseburger",
         "price": 6.99,
         "category": "main",
-        "description": "Der Klassiker mit Käse"
+        "description": "Der Klassiker mit Käse"        
     },
     {
         "name": "Beef Burger",

@@ -8,7 +8,7 @@ function returnHeader() {
 };
 
 
-function returnRestaurant(){
+function returnRestaurant() {
     return /*html*/ `
     <div id="content-container">
             <div>
@@ -21,6 +21,9 @@ function returnRestaurant(){
                             <span>Bewertung (4,2 von 5 Sternen)</span>
                         </div>
                     </section>
+                    <section id="cards-main">
+                        
+                        </section>
             </div>
             <div id="basket">
 <h2>Warenkorb</h2>
@@ -30,25 +33,21 @@ function returnRestaurant(){
 }
 
 
-function returnNavigation(){
-
-}
 
 
-function returnCards(){
+
+function returnCards() {
     return /*html*/ `
-                    <section id="cards-main">
-                        
-                    </section>
+
     `
 }
 
-function returnMains(index){
+function returnMains(index) {
     let priceToString = arrayFilteredMain[index]["price"].toString();
     let price = priceToString.replace(".", ",")
     return /*html*/ `
     <div class="oneCard">    
-        <div class="card-name">${arrayFilteredMain[index]["name"]}</div>
+        <div class="card-name"><span>${arrayFilteredMain[index]["name"]}</span><div class="add-dishes" onclick="addToBasket(arrayFilteredMain, ${index})">+</div></div>
         <div class="card-description">${arrayFilteredMain[index]["description"]}</div>
         <div class="card-price">${price}€</div>
     </div>
@@ -56,7 +55,7 @@ function returnMains(index){
 }
 
 
-function returnDesserts(index){
+function returnDesserts(index) {
     let priceToString = arrayFilteredDesserts[index]["price"].toString();
     let price = priceToString.replace(".", ",")
     return /*html*/ `
@@ -69,7 +68,7 @@ function returnDesserts(index){
 }
 
 
-function returnDrinks(index){
+function returnDrinks(index) {
     let priceToString = arrayFilteredDrinks[index]["price"].toString();
     let price = priceToString.replace(".", ",")
     return /*html*/ `
@@ -78,4 +77,31 @@ function returnDrinks(index){
         <div class="card-price">${price}€</div>
     </div>
     `
+}
+
+
+function returnBasket(index) {
+let calculatedPrice = basketPrices[index] * basketAmount[index];
+calculatedPrice = calculatedPrice.toFixed(2);
+
+let priceToString = calculatedPrice.toString();
+priceToString = priceToString.replace(".", ",");
+
+
+    return `
+        <div class="basketCard">
+            <div class="basketName">
+                ${basketFood[index]}
+            </div>
+            <div class="amount-and-price">
+                <div class="amount-calc">
+                    <div class="plusminus" onclick="removeOneAmount(${index})">-</div><div>${basketAmount[index]}x</div><div class="plusminus" onclick="addOneAmount(${index})">+</div>
+                </div>
+                <div class="pricing">
+                    ${priceToString}€
+                </div>
+            </div>
+        </div>
+   `
+
 }

@@ -9,13 +9,13 @@ body {
 
 #content-container {
     display: flex;
+    width: 100vw;
 }
 
 
-section {
-    width: 75vw;
+#section-corporate-design{
+    width: calc(100vw - 300px);
 }
-
 
 .start-pic {
     height: 240px;
@@ -61,7 +61,7 @@ h3 {
 
 .separator-pic{
     height: 150px;
-    width: 100%;
+    width: calc(100% - 16px);
     padding-left: 16px;
     object-fit: cover;
     margin-top:50px;
