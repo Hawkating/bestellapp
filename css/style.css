@@ -42,7 +42,28 @@ section {
     top: 240px;
     width: 120px;
     height:120px
-    
 }
 
+
+.restaurant-info{
+    padding: 0px 0px 0px 32px;;
+}
+
+
+.restaurant-info span{
+    color: #ff8000;
+}
+
+
+h3 {
+    margin-left: 32px;
+}
+
+.separator-pic{
+    height: 150px;
+    width: 100%;
+    padding-left: 16px;
+    object-fit: cover;
+    margin-top:50px;
+}
 

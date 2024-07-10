@@ -66,3 +66,10 @@ let dishes = [
         "description": "Erfrischung"
     }   
 ]
+
+
+let arrayFilteredMain = dishes.filter(function(filterMain){return filterMain.category == "main"});
+
+let arrayFilteredDesserts = dishes.filter(function(filterMain){return filterMain.category == "dessert"});
+
+let arrayFilteredDrinks = dishes.filter(function(filterMain){return filterMain.category == "drink"});

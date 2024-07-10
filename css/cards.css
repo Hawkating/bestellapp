@@ -1,0 +1,27 @@
+.oneCard{
+    border: solid 1px lightgrey;
+    padding: 16px 16px 16px 16px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+}
+
+.oneCard:hover{
+background-color: #fee5cb;
+}
+
+
+.card-name{
+    font-weight: bold;
+}
+
+
+.card-description{
+    color: grey;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.card-price{
+    font-weight: bold;
+    color: #ff8000;
+}
