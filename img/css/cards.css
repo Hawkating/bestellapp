@@ -1,0 +1,74 @@
+.oneCard {
+    border: solid 1px lightgrey;
+    padding: 0px 0px 16px 16px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+}
+
+
+.oneCard:hover {
+    background-color: #fee5cb;
+}
+
+
+.card-name {
+    font-weight: bold;
+    display: flex;
+}
+
+
+.card-name span {
+    margin-top: 16px;
+    width: 100%;
+}
+
+
+.card-description {
+    color: grey;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+
+.card-price {
+    font-weight: bold;
+    color: #ff8000;
+}
+
+
+.add-dishes {
+    color: #ff8000;
+    font-size: large;
+    border: solid 1px lightgrey;
+    margin: 0;
+    padding: 8px 16px 8px 16px;
+}
+
+
+.add-dishes:hover {
+    cursor: pointer;
+    color: #fee5cb;
+    background-color: #ff8000;
+    transition: 0.3s;
+}
+
+
+@media(max-width:850px) {
+    .navigation {
+        width: 100%;
+    }
+}
+
+
+@media(max-width: 440px) {
+    .oneCard {
+        width: 80vw;
+        flex-grow: 1;
+    }
+
+    .navigation {
+        flex-direction: column;
+        gap: 8px;
+        height: 100px;
+    }
+}

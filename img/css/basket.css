@@ -251,8 +251,7 @@
 
     .responsive-basket {
         height: 120px;
-        width: 100vw;
-        z-index: 15;
+        width: calc(100vw - 8px);
         background-color: #0069da;
         display: flex;
         align-items: center;
@@ -273,7 +272,7 @@
 
     .responsive-basket-up {
         height: 120px;
-        width: 100vw;
+        width: calc(100vw - 8px);
         background-color: #0069da;
         display: flex;
         align-items: center;
