@@ -161,6 +161,25 @@
 }
 
 
+.pay{
+    margin-top: 32px;
+    padding: 16px;
+    border-radius: 16px;
+    color: white;
+    background-color: #0069da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(4px 4px 2px #628be2);
+}
+
+
+.pay:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
 @media(max-width: 850px) {
 
     #dialog-basket {

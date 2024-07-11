@@ -122,14 +122,14 @@ function renderBasket() {
             let priceToString = calculatedPrice.toString();
             priceToString = priceToString.replace(".", ",");
 
-            document.getElementById('basket').innerHTML += `<div class="calculation">Lieferung: 3,00€<div><div><b>Gesamt: <b>${priceToString}€</b></div>`;
-            document.getElementById('dialog-basket').innerHTML += `<div class="calculation calcresp">Lieferung: 3,00€<div><div><b>Gesamt: <b>${priceToString}€</b></div>`;
+            document.getElementById('basket').innerHTML += `<div class="calculation">Lieferung: 3,00€<div><div><b>Gesamt: <b>${priceToString}€</b><div onclick="pay()" class="pay">bezahlen</div></div>`;
+            document.getElementById('dialog-basket').innerHTML += `<div class="calculation calcresp">Lieferung: 3,00€<div><div><b>Gesamt: <b>${priceToString}€</b><div onclick="pay()" class="pay">bezahlen</div></div>`;
         }   else {
                 calculatedPrice = calculatedPrice.toFixed(2);
                 let priceToString = calculatedPrice.toString();
                 priceToString = priceToString.replace(".", ",");
-                document.getElementById('basket').innerHTML += `<div class="calculation"><div><b>Gesamt: <b>${priceToString}€</b></div>`;
-                document.getElementById('dialog-basket').innerHTML += `<div class="calculation calcresp"><div><b>Gesamt: <b>${priceToString}€</b></div>`;
+                document.getElementById('basket').innerHTML += `<div class="calculation"><div><b>Gesamt: <b>${priceToString}€</b><div onclick="pay()" class="pay">bezahlen</div></div>`;
+                document.getElementById('dialog-basket').innerHTML += `<div class="calculation calcresp"><div><b>Gesamt: <b>${priceToString}€</b><div onclick="pay()" class="pay">bezahlen</div></div>`;
             }
     }
 
@@ -169,4 +169,18 @@ function deliveryToggle() {
 
 function toggleBasket() {
     document.getElementById('dialog-basket').classList.toggle('d-none');
+}
+
+
+function pay() {
+    basketFood = [];
+    basketPrices = [];
+    basketAmount = [];
+    renderBasket();
+    document.getElementById('dialog-justOrdered').classList.remove('d-none');
+}
+
+
+function closeDialog(){
+    document.getElementById('dialog-justOrdered').classList.add('d-none');
 }

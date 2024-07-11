@@ -1,6 +1,9 @@
 function returnHeader() {
     return /*html*/ `
-        <div class="dialog-basket" id="dialog-basket">
+        <div class="dialog-basket d-none" id="dialog-basket">
+        </div>
+        <div class="d-none" id="dialog-justOrdered">
+            <div class="ordered"><p><b>Vielen Dank, Ihre Testbestellung wurde entgegen genommen!</b></p><img src="./img/bestellung.jpg"><div onclick="closeDialog()" class="close-dialog">schließen</div></div>
         </div>
         <header class="header">
             <img class="header-logo" src="./img/logo_bestellapp.svg">
@@ -35,6 +38,9 @@ function returnRestaurant() {
         </div>
     </div>
     <div class="responsive-basket" onclick="toggleBasket()">Warenkorb</div>
+    <footer>
+    <span>Copyright © 2024</span>
+    </footer>
     `;
 }
 
@@ -99,7 +105,7 @@ function returnBasket(index) {
                 <div class="pricing">
                     ${priceToString}€
                 </div>
-                               <div class="pricing">
+                <div class="pricing">
                     <img class="trash-icon" onclick="removeCard(${index})" src="./img/trash.png">
                 </div>
             </div>
