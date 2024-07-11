@@ -64,7 +64,31 @@ let dishes = [
         "price": 1.99,
         "category": "drink",
         "description": "Erfrischung"
-    }   
+    },
+    {
+        "name": "Eistee Zitrone",
+        "price": 1.49,
+        "category": "drink",
+        "description": "Erfrischung"
+    },
+    {
+        "name": "Eistee Pfirsich",
+        "price": 1.49,
+        "category": "drink",
+        "description": "Erfrischung"
+    },
+    {
+        "name": "Ayran",
+        "price": 1.99,
+        "category": "drink",
+        "description": "Erfrischung"
+    },
+    {
+        "name": "Wasser Flasche 1L",
+        "price": 2.49,
+        "category": "drink",
+        "description": "Erfrischung"
+    },
 ]
 
 
