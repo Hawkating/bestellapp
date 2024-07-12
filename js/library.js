@@ -88,7 +88,7 @@ let dishes = [
         "price": 2.49,
         "category": "drink",
         "description": "Erfrischung"
-    },
+    }
 ]
 
 

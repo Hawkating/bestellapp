@@ -12,6 +12,7 @@
     padding: 0px 32px 0px 16px;
 }
 
+
 #basket::-webkit-scrollbar {
     width: var(--sb-size);
 }
@@ -52,7 +53,7 @@
     border-left: solid 1px #f7f5f1;
     box-shadow: -25px 0px 20px -20px rgba(0, 0, 0, 0.45);
     z-index: 20;
-   }
+}
 
 
 .amount-and-price {
@@ -91,6 +92,10 @@
 }
 
 
+.forCardsScreen {
+    width: 280px;
+}
+
 .pricing {
     display: flex;
     align-items: center;
@@ -99,7 +104,7 @@
 
 .calculation {
     margin-top: 32px;
-    width: 100%;
+    width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -182,9 +187,10 @@
 }
 
 
-.pay{
+.pay {
     margin-top: 32px;
     margin-bottom: 200px;
+    width: 100px;
     padding: 16px;
     border-radius: 16px;
     color: white;
@@ -196,7 +202,7 @@
 }
 
 
-.pay:hover{
+.pay:hover {
     cursor: pointer;
     transform: scale(1.2);
 }

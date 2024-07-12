@@ -28,7 +28,7 @@ function returnRestaurant() {
                     <span>Bewertung (4,2 von 5 Sternen)</span>
                 </div>                  
             </section>
-            <section id="cards-main">
+            <section id="dishes-main">
                 <div class="navigation"><a href="#mains">Hauptgerichte</a><a href="#desserts">Desserts</a><a href="#drinks">Getränke</a></div>
             </section>
         </div>
@@ -43,6 +43,11 @@ function returnRestaurant() {
     <span>Copyright © 2024</span>
     </footer>
     `;
+}
+
+
+function returnDishesMain(){
+    return `<div class="navigation"><a href="#mains">Hauptgerichte</a><a href="#desserts">Desserts</a><a href="#drinks">Getränke</a></div><img id="mains" class="separator-pic" src="./img/main.jpg"><h3>Hauptgerichte</h3>`;
 }
 
 
@@ -87,7 +92,28 @@ function returnDrinks(index) {
 }
 
 
-function returnBasket(index) {
+function returnOrderCard(index){
+    
+    let calculatedPrice = basketPrices[index] * basketAmount[index];
+    calculatedPrice = calculatedPrice.toFixed(2);
+
+    let priceToString = calculatedPrice.toString();
+    priceToString = priceToString.replace(".", ",");
+
+    return `    <div class="amount-and-price" id="${basketFood[index]}">
+                <div class="amount-calc">
+                    <div class="plusminus" onclick="removeOneAmount(${index})">-</div><div>${basketAmount[index]}x</div><div class="plusminus" onclick="addOneAmount(${index})">+</div>
+                </div>
+                <div class="pricing">
+                    ${priceToString}€
+                </div>
+                <div class="pricing">
+                    <img class="trash-icon" onclick="removeCard(${index})" src="./img/trash.png">
+                </div>`;
+}
+
+
+function returnBasketCards(index) {
     let calculatedPrice = basketPrices[index] * basketAmount[index];
     calculatedPrice = calculatedPrice.toFixed(2);
 
@@ -99,7 +125,7 @@ function returnBasket(index) {
             <div class="basketName">
                 ${basketFood[index]}
             </div>
-            <div class="amount-and-price">
+            <div class="amount-and-price" id="${basketFood[index]}">
                 <div class="amount-calc">
                     <div class="plusminus" onclick="removeOneAmount(${index})">-</div><div>${basketAmount[index]}x</div><div class="plusminus" onclick="addOneAmount(${index})">+</div>
                 </div>
@@ -115,7 +141,7 @@ function returnBasket(index) {
 }
 
 
-function returnBasketResponsive(index) {
+function returnBasketCardsResponsive(index) {
     let calculatedPrice = basketPrices[index] * basketAmount[index];
     calculatedPrice = calculatedPrice.toFixed(2);
 
@@ -141,4 +167,16 @@ function returnBasketResponsive(index) {
             </div>
        `;
 
+}
+
+
+function returnHtmlForBasket() {
+return `<h2>Warenkorb</h2><div onclick="deliveryToggle()" class="delivery" id="deliveryScreen"><div id="deliveryYesScreen" class="deliverybox choosen"><img class="deliverypic" src="./img/delivery.png"></div>
+            <div id="deliveryNoScreen" class="deliverybox"><img class="deliverypic" src="./img/nodelivery.png"></div></div><div id="forCardsScreen"></div><div id="forCalcScreen"></div>`
+}
+
+
+function returnHtmlForDialogBasket(){
+    return `<div onclick="deliveryToggle()" class="delivery" id="deliveryResp"><div id="deliveryYesResp" class="deliverybox choosen"><img class="deliverypic" src="./img/delivery.png"></div>
+            <div id="deliveryNoResp" class="deliverybox"><img class="deliverypic" src="./img/nodelivery.png"></div></div><div class="responsive-basket-up" onclick="toggleBasket()">Warenkorb</div> <div id="forCardsResp"></div><div id="forCalcResp"></div>`
 }
