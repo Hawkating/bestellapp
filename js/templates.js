@@ -100,8 +100,7 @@ function returnOrderCard(index){
     let priceToString = calculatedPrice.toString();
     priceToString = priceToString.replace(".", ",");
 
-    return `    <div class="amount-and-price" id="${basketFood[index]}">
-                <div class="amount-calc">
+    return `    <div class="amount-calc">
                     <div class="plusminus" onclick="removeOneAmount(${index})">-</div><div>${basketAmount[index]}x</div><div class="plusminus" onclick="addOneAmount(${index})">+</div>
                 </div>
                 <div class="pricing">
@@ -153,7 +152,7 @@ function returnBasketCardsResponsive(index) {
                 <div class="basketName">
                     ${basketFood[index]}
                 </div>
-                <div class="amount-and-price">
+                <div class="amount-and-price" id="${basketFood[index]}Resp">
                     <div class="amount-calc">
                         <div class="plusminus" onclick="removeOneAmount(${index})">-</div><div>${basketAmount[index]}x</div><div class="plusminus" onclick="addOneAmount(${index})">+</div>
                     </div>

@@ -82,7 +82,8 @@ function addOneAmount(index) {
 
 function renderOrderCard(index){
     document.getElementById(basketFood[index]).innerHTML = returnOrderCard(index);
-
+    document.getElementById(`${basketFood[index]}Resp`).innerHTML = returnOrderCard(index);
+    
     renderCalculation();
 }
 
