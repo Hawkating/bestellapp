@@ -51,6 +51,7 @@ function addToBasket(array, index) {
         }
     
     renderBasket();
+    deliverySet();
     renderCalculation();
 }
 
@@ -123,6 +124,7 @@ function renderBasket() {
                     document.getElementById('forCardsResp').innerHTML += returnBasketCardsResponsive(i);
                 }
                 renderCalculation();
+                deliverySet();
         }
 }
 
@@ -158,6 +160,21 @@ function deliveryToggle() {
 }
 
 
+function deliverySet(){
+    if (delivery) {
+        document.getElementById('deliveryYesScreen').classList.add('choosen');
+        document.getElementById('deliveryNoScreen').classList.remove('choosen');
+        document.getElementById('deliveryYesResp').classList.add('choosen');
+        document.getElementById('deliveryNoResp').classList.remove('choosen');
+    }   else {
+            document.getElementById('deliveryYesScreen').classList.remove('choosen');
+            document.getElementById('deliveryNoScreen').classList.add('choosen');
+            document.getElementById('deliveryYesResp').classList.remove('choosen');
+            document.getElementById('deliveryNoResp').classList.add('choosen');
+        }
+
+}
+
 function toggleBasket() {
     document.getElementById('dialog-basket').classList.toggle('d-none');
 }
@@ -169,6 +186,7 @@ function pay() {
     basketAmount = [];
     renderBasket();
     document.getElementById('dialog-justOrdered').classList.remove('d-none');
+    delivery = true;
 }
 
 
