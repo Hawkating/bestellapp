@@ -20,6 +20,7 @@ function returnRestaurant() {
         <div>
             <section id="section-corporate-design">
                 <div class="restaurant">
+                    <img class="background-pic" src="./img/burger.jpg">
                     <img class="circle-pic" src="./img/burger-circle.webp">
                 </div>
                 <div class="restaurant-info">
